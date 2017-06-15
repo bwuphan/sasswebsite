@@ -1,23 +1,32 @@
-@import "partials/variables", "partials/mixins";
+@import "partials/functions";
+@import "partials/variables";
+@import "partials/mixins";
 
 @include google-font("Alegreya+Sans");
 @include google-font("Titillium+Web");
 
 @include fancy-links;
 
+@include apply-to-ie-6 {
+  body {
+    font-size: 125%;
+  }
+}
+
+$col: col-width($columns: 8);
+
 body {
   font-family: $text-font;
+  font-size: em(18px);
   color: $text-color;
-  color: rgb(10, 15, 50);
-  background-color: hsl(60, 50%, 100%);
-  @include large-screen {
+
+  @include large-screens {
     font-size: 125%;
   }
 }
 
 h1, h2, h3, h4 {
   font-family: $headline-font;
-
 }
 
 h2 {
@@ -26,11 +35,11 @@ h2 {
 
 p {
   font-family: $text-font;
-
 }
 
 a {
   color: $link-color;
+
   &:hover {
     color: darken($link-color, 15%);
   }
@@ -41,27 +50,25 @@ a {
   padding: 8px 12px;
 }
 
-@include apply-to-ie-6 {
-  body {
-    font-size: 125%;
-  }
-}
-
 #header {
-  @include box($border: 1px solid #999);
+  @include box($border: 1px solid #fff, $radius: 12px);
   @include box-shadow(2px 0px 4px #999, 1px 1px 6px $secondary-color);
   height: $header-height;
   background-color: $theme-color;
+
   #main-menu {
+
     li {
       display: inline;
     }
+
     a {
       color: $menu-item-color;
-      border-bottom: 1px solid transparentize(#fefefe, 1);
       padding: 6px 8px;
-      transition: border-bottom 0.4s;
+      border-bottom: 1px solid transparentize(#fefefe, 1);
+      transition: border-bottom 0.5s;
       transition-timing-function: ease-in-out;
+
       &:hover {
         border-bottom: 1px solid opacify(#fefefe, .5);
       }
@@ -75,7 +82,7 @@ a {
 
 #main {
   width: $content-width;
-  @include large-screen {
+  @include large-screens {
     width: auto;
     max-width: $content-width;
   }
@@ -83,12 +90,28 @@ a {
   margin-right: auto;
 
   #content {
+    float: left;
+    width: 6*$col;
   }
+
   #sidebar {
+    float: right;
+    width: 2*$col;
+
+    li {
+      list-style-type: none;
+      padding: 16px 20px;
+      border-bottom: 1px dashed #999;
+
+      &:hover {
+        background-color: #efefef;
+      }
+    }
   }
 }
 
 #footer {
+  clear: both;
   height: $footer-height;
   background-color: $ternary-color;
 }
