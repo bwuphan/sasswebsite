@@ -7,6 +7,13 @@ a {
 * html body {
   font-size: 125%; }
 
+.error, .critical-error {
+  color: red; }
+
+.critical-error {
+  bottom: 1px solid red;
+  font-weight: bold; }
+
 body {
   font-family: "Alegreya Sans", Arial, sans-serif;
   font-size: 1.125em;
@@ -30,12 +37,16 @@ a {
   a:hover {
     color: #ca510d; }
 
-.warning-button {
+.warning-button, .cta-button {
   background-color: orange;
   color: #fff;
   padding: 8px 12px; }
-  .warning-button:hover {
+  .warning-button:hover, .cta-button:hover {
     background-color: #ffb733; }
+
+.cta-button {
+  border-radius: 6px;
+  font-weight: bold; }
 
 #header {
   border-radius: 12px;
